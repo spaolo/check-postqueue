@@ -18,6 +18,8 @@ clean:
 	dh_testroot
 	dh_clean -d
 	printf "" > debian/files
+	rm debian/check-postqueue.debhelper.log
+	rm debian/check-postqueue.substvars
 
 binary-indep: build
 
