@@ -273,7 +273,7 @@ elsif	($rec_type eq 'N') {
 						{$rec_type='X';}
 				if ( (($opt_f)||($opt_F))
 						&&( $from eq 'NULL_FROM' )
-						&&($rec_tmp=~ /^From:\s+(\S+)\s*.*$/)
+						&&($rec_tmp=~ /^From:\s+(.+)\s*$/)
 					)
 						{ 
 						$from=$1; 
