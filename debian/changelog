@@ -1,3 +1,12 @@
+check-postqueue (v-0.0.2-2) unstable; urgency=low
+
+  * commit 190fb7f7 bring clean error when already clean
+  * fixed last record condition for opt_listsubj for -f -F -b -B
+  * fixed From parsing
+  * 190fb7f7 fixed debian rules clean
+
+ -- Paolo Schiro <paolo@schiro.it>  Fri, 17 Jun 2016 13:02:58 +0200
+
 check-postqueue (0.0.2-1) experimental; urgency=low
   * added --listsnd --listrcpt --listrrcpt --listdrcpt
   * added --dir for non standard postfix spool
