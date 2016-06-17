@@ -1,0 +1,11 @@
+Source: check-postqueue
+Section: kpn
+Priority: extra
+Maintainer: Kpnqwest Italia <paolo.schiro@kpnqwest.it>
+Build-Depends: debhelper (>= 5.0.0)
+
+Package: check-postqueue
+Architecture: all
+Pre-Depends: perl, perl-modules, perl-base
+Description: Postfix queue survival util
+ inspect, summarize and match postfix queue

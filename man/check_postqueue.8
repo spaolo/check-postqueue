@@ -1,0 +1,117 @@
+.\" Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH CHECK_POSTQUEUE 8 "Mon, 18 Aug 2014 13:19:19 +0200"
+.\" Please adjust this date whenever revising the manpage.
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+\fBcheck_postqueue.pl\fP - kqi postfix queue survival tool
+.SH SYNOPSIS
+check_postqueue.pl --help | -l | -s|-d|-r|-m|-c|-h|-o|-j|-e|-b [-S -R -C -H -J -O -B string to match]  
+.SH DESCRIPTION
+inspect, match and report large postfix queues to let administrators handle it easy manually or batch scripts
+script have thre argument types: flags (-- but -l, -m and -b), reporting (lower case) or match (upper case)
+.SH USAGE
+.TP 
+\fBcheck_postqueue.pl\fP --help
+.br
+	-s view sender
+.br
+	-S match sender
+.br
+	-f view From
+.br
+	-F match From
+.br
+	-r view standing rcpt
+.br
+	-d view done rcpt
+.br
+	-R match original recipient
+.br
+	-c view client address
+.br
+	-C match client address
+.br
+	-h view helo name
+.br
+	-H match helo name
+.br
+	-o view origin
+.br
+	-O match origin
+.br
+	-j view subject
+.br
+	-J match subject
+.br
+	-e view errto
+.br
+	-E match errto
+.br
+	-u view sasl login
+.br
+	-U match sasl login
+.br
+	-t older then time
+.br
+	-T newer then time
+.br
+	-B match Body
+.br
+-b limit the Body search to the first n line (default 100)
+.br
+-m print mail not domain
+.br
+-l postfix_id listing mode (postuper -)
+.br
+ --listip list ips insthead of session-id
+.br
+ --listsubj list ips insthead of session-id
+.br
+ --listuser list sasl user insthead of session-id
+.br
+ --cut truncate subject
+.br
+ --url list found urls
+.br
+ --url-ip list url resolved ip
+.br
+ --url-ip-match list url resolved ip
+.br
+ --bhost list bouncing hosts
+.br
+ --no-active exclude active queue from search
+.br
+ --no-incoming exclude active queue from search
+.br
+ --no-deferred exclude deferred queue from search
+.br
+ --maildrop include maildrop queue in search
+.br
+ --hold scan the hold queue
+.br
+ --flush set 0=1 avoid this in normal operations
+.br
+ --filter match filter name
+.br
+ --or join operators with logic or insthead of and
+.br
+	--board workaround for funny queue format on linuxboards,run read until eof
+.br
+	--help help
+.br
+.SH AUTHOR
+Kpnqwest Italia spaolo
+.br
+This manual page was written by Kpnqwest Italia <paolo.schiro@kpnqwest.it>, for the KQI survivor (but may be used by others).

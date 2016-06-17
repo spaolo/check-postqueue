@@ -1,0 +1,20 @@
+#changelog
+#20160421
+#added --listsnd --listrcpt --listrrcpt --listdrcpt
+#added --dir for non standard postfix spool
+
+#20130711
+#added --flush for very busy system
+
+#20130625
+#added --list[ip|user|subject]
+
+#20131202
+#--board for recipients listed near EOF
+
+#20121222
+# -bB -jJ -fF not mutually exclusive anymore
+#print " -b/-B , -f/-F , -J/-j are alternative\n";
+# -fF better string parsing
+
+#ancient unregistered modifications
