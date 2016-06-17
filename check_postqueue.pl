@@ -280,7 +280,7 @@ elsif	($rec_type eq 'N') {
 						#$from=~ s/\s.*$/;
 						if ($from=~ /<([^>]*)>/)
 							{$from=$1};
-						if ( ($opt_j)||($opt_J)
+						if ( ($opt_j)||($opt_J)||($opt_listsubj)
 							||($opt_bhost)||($opt_B)) 
 							#||($opt_b)||($opt_B)) 
 							{ $rec_type='N'} else	{ $rec_type='X'}
@@ -301,7 +301,7 @@ elsif	($rec_type eq 'N') {
 						{
 						if ($rec_tmp=~ /$opt_B/)
 							{$body_match=1;
-							if ( ($opt_j)||($opt_J)
+							if ( ($opt_j)||($opt_J) ||($opt_listsubj)
 								||($opt_f)||($opt_F)) 
 								{ $rec_type='N'} 
 							else	{ $rec_type='X'}
