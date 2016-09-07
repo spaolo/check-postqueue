@@ -60,6 +60,8 @@ print " --flush set $|=1 avoid this in normal operations\n";
 print " --filter match filter name\n"; 
 print " --or\n"; 
 print "	--whole workaround for record pointer,run read until eof\n";
+print " --samples process only first n samples from queue\n";
+print " --confdir take postfix spool from other configdir than /etc/postfix\n";
 print " --dir set postfix spool other than /var/spool/postfix\n";
 print "	--help help\n";
 }
@@ -79,7 +81,9 @@ my ($help, $opt_d, $opt_cut, $opt_B, $opt_b,$opt_m,
 	$opt_listip,$opt_listsubj,$opt_listuser,
 	$opt_listsnd,$opt_listrcpt,$opt_listrrcpt,$opt_listdrcpt,
 	$opt_flush,$opt_url,$opt_url_ip,$opt_url_ip_match,$opt_bhost,$opt_whole,
-	$opt_postdir,$opt_samples)=
+	$opt_samples,
+	$opt_postdir,$opt_postconfdir
+	)=
 	(0,0,0,0,100,0,		#output opt
 	0,0,0,0,0,0,0,0,0,0,	#record opt
 	0,0,0,0,0,0,0,0,0,0,	#record match opt
@@ -88,7 +92,8 @@ my ($help, $opt_d, $opt_cut, $opt_B, $opt_b,$opt_m,
 	0,0,0,			#list
 	0,0,0,0,		#list
 	0,0,0,0,0,0,
-	'/var/spool/postfix',0
+	0,
+	,'/var/spool/postfix','/etc/postfix'
 	);
 
 GetOptions ("help" => \$help,   'cut=i' =>\$opt_cut, 'd' =>\$opt_d, 'B=s' =>\$opt_B,'b=i' =>\$opt_b,
@@ -109,7 +114,8 @@ GetOptions ("help" => \$help,   'cut=i' =>\$opt_cut, 'd' =>\$opt_d, 'B=s' =>\$op
 		'url'=>\$opt_url,'url-ip'=>\$opt_url_ip ,'url-ip-match=s'=>\$opt_url_ip_match ,'bhost'=>\$opt_bhost
 		,'flush'=>\$opt_flush,'whole'=>\$opt_whole 
 	 	,'samples=i' =>\$opt_samples
-		,'dir=s'=>\$opt_postdir)|| &die_help;
+		,'dir=s'=>\$opt_postdir
+		,'confdir=s'=> \$opt_postconfdir )|| &die_help;
 
 
 #print join(':',$opt_S,$opt_R,$opt_C,$opt_H,$opt_O,$opt_J,$opt_F,$opt_E,$opt_t,$opt_T)."\n";
@@ -146,6 +152,21 @@ if ($opt_or)
 if ($opt_flush)
 	{$|=1;}
 
+
+#postdir will come first
+if ( $opt_postdir eq '/var/spool/postfix' ){
+
+	#take opt_postdir from $opt_postconfdir/main.cf queue_directory
+	my @postconf_queue_directory=`/usr/sbin/postconf -h -c "$opt_postconfdir" queue_directory`;
+	
+	if (($#postconf_queue_directory < 0 ) || (length($postconf_queue_directory[0]) < 5 ) )
+		{die "warning cannot read queue_directory from $opt_postconfdir\n"}
+	else	{
+		chomp $postconf_queue_directory[0];
+		$opt_postdir=$postconf_queue_directory[0];
+		}
+	#print $opt_postconfdir." ".$postconf_queue_directory[0]."\n";
+}
 
 my @scan_dirs=();
 push @scan_dirs,$opt_postdir.'/deferred/'unless ($opt_nodeferred);
