@@ -1,11 +1,19 @@
-check-postqueue (v-0.0.2-2) unstable; urgency=low
+check-postqueue (0.0.2-3) unstable; urgency=low
 
-  * commit 190fb7f7 bring clean error when already clean
-  * fixed last record condition for opt_listsubj for -f -F -b -B
-  * fixed From parsing
+  * 44af9322 added --confdir to imulate postconf -c postsuper -c and postmanyother -c behavior
+  * 3ac2bd55 Debian Build
+
+ -- Paolo Schiro <paolo.schiro@kpnqwest.it>  Wed Sep 7 16:18:51 2016 +0200
+
+check-postqueue (0.0.2-2) unstable; urgency=low
+
+  * b857afcd commit 190fb7f7 bring clean error when already clean
+  * 72c9d5f3 fixed last record condition for opt_listsubj for -f -F -b -B
+  * b3a8695c fixed From parsing
   * 190fb7f7 fixed debian rules clean
+  * b3f290ee initial import after samples functionality
 
- -- Paolo Schiro <paolo@schiro.it>  Fri, 17 Jun 2016 13:02:58 +0200
+ -- Paolo Schiro <paolo.schiro@kpnqwest.it>  Fri Jun 17 13:22:44 2016 +0200
 
 check-postqueue (0.0.2-1) experimental; urgency=low
   * added --listsnd --listrcpt --listrrcpt --listdrcpt

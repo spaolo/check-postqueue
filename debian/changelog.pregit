@@ -1,0 +1,9 @@
+check-postqueue (0.0.2-1) experimental; urgency=low
+  * added --listsnd --listrcpt --listrrcpt --listdrcpt
+  * added --dir for non standard postfix spool
+ -- Kpnqwest Italia <paolo.schiro@kpnqwest.it>  Thu, 21 Apr 2016 17:27:11 +0200
+
+check-postqueue (0.0.1-1) experimental; urgency=low
+  * Package created from version 20131202
+ -- Kpnqwest Italia <paolo.schiro@kpnqwest.it>  Mon, 18 Aug 2014 12:29:47 +0200
+
