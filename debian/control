@@ -1,5 +1,5 @@
 Source: check-postqueue
-Section: kpn
+Section: mailsrv/mail
 Priority: extra
 Maintainer: Kpnqwest Italia <paolo.schiro@kpnqwest.it>
 Build-Depends: debhelper (>= 5.0.0)
