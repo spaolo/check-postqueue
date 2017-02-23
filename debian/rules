@@ -5,7 +5,7 @@
 #export DH_VERBOSE=1
 
 # Use v3 compatability mode, so ldconfig gets added to maint scripts.
-export DH_COMPAT=5
+#export DH_COMPAT=5
 #export ocfscripts=kqi-fakenat-ifaces kqi-ipt-rules kqi-net-cfg kqi-net-iface kqi-priv-routes kqi-racoon kqi-rsync-cfg
 
 PACKAGE=$(shell dh_listpackages)
@@ -17,9 +17,9 @@ clean:
 	dh_testdir
 	dh_testroot
 	dh_clean -d
-	printf "" > debian/files
-	rm -f debian/check-postqueue.debhelper.log
-	rm -f debian/check-postqueue.substvars
+#	printf "" > debian/files
+#	rm -f debian/check-postqueue.debhelper.log
+#	rm -f debian/check-postqueue.substvars
 
 binary-indep: build
 
